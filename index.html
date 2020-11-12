@@ -1,4 +1,4 @@
-﻿<html><head>
+<html><head>
 <title>PICO-8 Cartridge</title>
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <script type="text/javascript">
@@ -15,7 +15,7 @@
 	// if the browser can not create an audio context outside of a user gesture (e.g. on iOS), p8_autoplay has no effect
 	var p8_autoplay = false;
 
-	// When pico8_state is defined, PICO-8 will set .is_paused, .sound_volume and .frame_number each frame 
+	// When pico8_state is defined, PICO-8 will set .is_paused, .sound_volume and .frame_number each frame
 	// (used for determining button icons)
 	var pico8_state = [];
 
@@ -78,7 +78,7 @@
 			return;
 		}
 		var is_fullscreen=(document.fullscreenElement || document.mozFullScreenElement || document.webkitIsFullScreen || document.msFullscreenElement);
-		
+
 		// hash based on: pico8_state.sound_volume  pico8_state.is_paused bottom_margin left is_fullscreen p8_touch_detected
 		var hash = 0;
 		hash = pico8_state.sound_volume;
@@ -91,7 +91,7 @@
 			requestAnimationFrame(p8_update_button_icons);
 			return;
 		}
-		
+
 		p8_buttons_hash = hash;
 		// console.log("@@ updating button icons");
 
@@ -99,7 +99,7 @@
 		for (i = 0; i < els.length; i++)
 		{
 			el = els[i];
-			index = el.id;			
+			index = el.id;
 			if (index == 'p8b_sound') index += (pico8_state.sound_volume == 0 ? "0" : "1"); // 1 if undefined
 			if (index == 'p8b_pause') index += (pico8_state.is_paused > 0 ? "1" : "0");     // 0 if undefined
 
@@ -111,7 +111,7 @@
 
 
 			// hide all buttons for touch mode (can pause with menu buttons)
-			
+
 			var is_visible = p8_is_running;
 
 			if ((!p8_touch_detected || !p8_allow_mobile_menu) && el.parentElement.id == "p8_menu_buttons_touch")
@@ -120,7 +120,7 @@
 			if (p8_touch_detected && el.parentElement.id == "p8_menu_buttons")
 				is_visible = false;
 
-			if (is_fullscreen) 
+			if (is_fullscreen)
 				is_visible = false;
 
 			if (is_visible)
@@ -137,19 +137,19 @@
 	{
 		return x < 0 ? -x : x;
 	}
-	
+
 	// step 0 down 1 drag 2 up (not used)
 	function pico8_buttons_event(e, step)
 	{
 		if (!p8_is_running) return;
-	
+
 		pico8_buttons[0] = 0;
 
 		if (step == 2 && typeof(pico8_mouse) !== 'undefined')
 		{
 			pico8_mouse[2] = 0;
 		}
-		
+
 		var num = 0;
 		if (e.touches) num = e.touches.length;
 
@@ -159,7 +159,7 @@
 			pico8_mouse[2] = 0;
 		}
 
-		
+
 		for (var i = 0; i < num; i++)
 		{
 			var touch = e.touches[i];
@@ -197,7 +197,7 @@
 
 
 			// buttons
-			
+
 			b = 0;
 
 			if (y < h - r*8)
@@ -212,7 +212,7 @@
 				{
 					// menu button: half as high as X O button
 					// stretch across right-hand half above X O buttons
-					if (x > w - r*3) 
+					if (x > w - r*3)
 						b |= 0x40;
 				}
 				else if (x < w/2 && x < r*6)
@@ -227,7 +227,7 @@
 					var dx = x - cx;
 					var dy = y - cy;
 
-					if (abs(dx) > abs(dy) * 0.6) // horizontal 
+					if (abs(dx) > abs(dy) * 0.6) // horizontal
 					{
 						if (dx < -deadzone) b |= 0x1;
 						if (dx > deadzone) b |= 0x2;
@@ -241,9 +241,9 @@
 				else if (x > w - r*6)
 				{
 					// button; diagonal split from bottom right corner
-				
+
 					mask = 0x30;
-					
+
 					// one or both of [X], [O]
 					if ( (h-y) > (w-x) * 0.8) b |= 0x10;
 					if ( (w-x) > (h-y) * 0.8) b |= 0x20;
@@ -251,7 +251,7 @@
 			}
 
 			pico8_buttons[0] |= b;
-		
+
 		}
 	}
 
@@ -281,7 +281,7 @@
 		p8_layout_frames ++;
 
 		// assumes frame doesn't have padding
-		
+
 		var is_fullscreen=(document.fullscreenElement || document.mozFullScreenElement || document.webkitIsFullScreen || document.msFullscreenElement);
 		var frame_width = p8_frame.offsetWidth;
 		var frame_height = p8_frame.offsetHeight;
@@ -317,9 +317,9 @@
 
 		// csize should never be higher than parent frame
 		// (otherwise stretched large when fullscreen and then return)
-		if (!is_fullscreen && p8_frame) 
+		if (!is_fullscreen && p8_frame)
 			csize = Math.min(csize, last_windowed_container_height); // p8_frame_0 parent
-		
+
 
 		if (is_fullscreen)
 		{
@@ -368,7 +368,7 @@
 		// record this for returning to original size after fullscreen pushes out container height (argh)
 		if (!is_fullscreen && p8_frame)
 			last_windowed_container_height = p8_frame.parentNode.parentNode.offsetHeight;
-		
+
 
 		// mobile in portrait mode: put screen at top (w / a little extra space for fullscreen button if needed)
 		// (don't cart too about buttons overlapping screen)
@@ -402,7 +402,7 @@
 			p8_container.style.marginTop = "0px";
 
 			// buttons
-			
+
 			// same as touch event handling
 			var w = window.innerWidth;
 			var h = window.innerHeight;
@@ -425,7 +425,7 @@
 			el.style.height = r*6;
 			if (el.getAttribute("src") != p8_gfx_dat["controls_left_panel"]) // optimisation: avoid reload? (browser should handle though)
 				el.setAttribute("src", p8_gfx_dat["controls_left_panel"]);
-			
+
 			// scroll to cart (need to stop running with X)
 			p8_frame.scrollIntoView(true);
 
@@ -466,18 +466,18 @@
 
 	function p8_create_audio_context()
 	{
-		if (pico8_audio_context) 
+		if (pico8_audio_context)
 		{
 			try {
 				pico8_audio_context.resume();
 			}
 			catch(err) {
 				console.log("** pico8_audio_context.resume() failed");
-			}	
+			}
 			return;
 		}
 
-		var webAudioAPI = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext;			
+		var webAudioAPI = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext;
 		if (webAudioAPI)
 		{
 			pico8_audio_context = new webAudioAPI;
@@ -489,7 +489,7 @@
 					var dummy_source_sfx = pico8_audio_context.createBufferSource();
 					dummy_source_sfx.buffer = pico8_audio_context.createBuffer(1, 1, 22050); // dummy
 					dummy_source_sfx.connect(pico8_audio_context.destination);
-					dummy_source_sfx.start(1, 0.25); // gives InvalidStateError -- why? hasn't been played before 
+					dummy_source_sfx.start(1, 0.25); // gives InvalidStateError -- why? hasn't been played before
 					//dummy_source_sfx.noteOn(0); // deleteme
 				}
 				catch(err) {
@@ -501,7 +501,7 @@
 
 	function p8_close_cart()
 	{
-		// just reload page! used for touch buttons -- hard to roll back state 
+		// just reload page! used for touch buttons -- hard to roll back state
 		window.location.hash = ""; // triggers reload
 	}
 
@@ -525,7 +525,7 @@
 			}
 		}
 
-		// create audio context and wake it up (for iOS -- needs happen inside touch event)		
+		// create audio context and wake it up (for iOS -- needs happen inside touch event)
 		p8_create_audio_context();
 
 		// show touch elements
@@ -545,7 +545,7 @@
 		e = document.createElement("script");
 		p8_script = e;
 		e.onload = function(){
-			
+
 			// show canvas / menu buttons only after loading
 			el = document.getElementById("p8_playarea");
 			if (el) el.style.display="table";
@@ -560,7 +560,7 @@
 		e.type = "application/javascript";
 		e.src = "magictoad.js";
 		e.id = "e_script";
-		
+
 		document.body.appendChild(e); // load and run
 
 		// hide start button and show canvas / menu buttons. hide start button
@@ -568,7 +568,7 @@
 		if (el) el.style.display="none";
 
 		// add #playing for touchscreen devices (allows back button to close)
-		// X button can also be used to trigger this 
+		// X button can also be used to trigger this
 		if (p8_touch_detected)
 		{
 			window.location.hash = "#playing";
@@ -580,7 +580,7 @@
 		}
 	}
 
-	
+
 	// gamepad  https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API
 	// (sets bits in pico8_buttons[])
 	function p8_update_gamepads() {
@@ -662,7 +662,7 @@
 		    }
 			return;
 		}
-		
+
 		var el = document.getElementById("p8_playarea");
 
 		if ( el.requestFullscreen ) {
@@ -711,7 +711,7 @@ canvas{
 
 .p8_start_button{
 	cursor:pointer;
-	background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAADF0lEQVR4Ae2dsW7TUBiF/2tZWVBnBvYkTDwAaiWUHalDh7xFhKwoUyyYKlQh3oK9C3v7BB3bhYknYGOBwSmxHTfcm9w/vn/6Hf2Dc6R28PH5zupclgvqT7mILOez6senz1/rz7ydAyir3nX9dfPqDx1AvQSonwD46pPYANpweDmX5byF/hGECIAAUD8jkOXlonBZXl25KKqrfsqHV/UrZdhy8Pf1NwOoO51/xkW8FYKW89lyPuusSPnlBb6i3/rqtzQAbqj4Le5v3wAu/v2jf+fxnWr7XgHwshT90AZwcS/rXOqntO/i42/6NCD1BvC16vr+DWBCVXwQZGmEIUZ036sBQEPRB0GWEAQ34vs0IPUG8LXq+v4NYEJVfBBkaYQhRnTfqwFAQ9EHQZYQ1H9/7066zy6XjDVgMpbJuPFcd46yAcmt1ptf7QfTa+zfgNSmrFECu1Nse4SfA4LSau7diYhcfH8cZDvkfJKoPg1IqLyTsUzGF6+bC/zYAGPwqc4YgrYGYPKCAjD5iSXu2x5h+/f/EbayZlZ9/wbADRUfBKWOIIih6ns1AGgo+iDIEoLgRnyfBqTeAL5WXd+/AUyoig+CLI0wxIjuezUAaCj6IMgSguBGfJ8GpN6AndMuB9NyMC1//Gw98NUHj/COU7MoVncu5bmsfzLFNd+5LN/y+f+ZvQwaiUbUg6ncX8moWFv3VzIqPv7+tvP/PD6FjXBw40aFXF6vni+v62GwwwEI2q1ca+Y0D/g0fP8NCL3qdb97+771sM//PL4LQ1Bwv0TOToc3tw83tw9np0P4s+krj3CXGOGwDXjWgD6A778BvEEVX2+EufgjzH5G970aADQUfRBkCUFwI75PA1JvAF+rru/fACZUxQdBlkYYYkT3vRoANBR9EGQJQXAjvk8DUm8AX6uu798AJlTFB0GWRhhiRPe9GgA0FH0Q1O85l+WhFEIRFbwBiAAIABEAASACIABEAASACIAAEAEQACIAAkAEQACIAAgAEQABIAIgAEQABIAIgAAQARAAIgACQARAAIgACAARAAGgSn8BgyVlTIZtaOAAAAAQdEVYdExvZGVQTkcAMjAxMTAyMjHjWbbBAAAAAElFTkSuQmCC");
+	background:url("data:image/png;base64,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");
 	-repeat center;
 	-webkit-background-size:cover; -moz-background-size:cover; -o-background-size:cover; background-size:cover;
 }
@@ -777,7 +777,7 @@ canvas{
 				<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault();" >
 				</canvas>
 				<div class=p8_menu_buttons id="p8_menu_buttons" style="margin-left:10px;">
-					<div class="p8_menu_button" style="position:absolute; bottom:125px" id="p8b_controls" onClick="p8_give_focus(); Module.pico8ToggleControlMenu();"></div>					
+					<div class="p8_menu_button" style="position:absolute; bottom:125px" id="p8b_controls" onClick="p8_give_focus(); Module.pico8ToggleControlMenu();"></div>
 					<div class="p8_menu_button" style="position:absolute; bottom:90px" id="p8b_pause" onClick="p8_give_focus(); Module.pico8TogglePaused(); p8_update_layout_hash = -22;"></div>
 					<div class="p8_menu_button" style="position:absolute; bottom:55px" id="p8b_sound" onClick="p8_give_focus(); p8_create_audio_context(); Module.pico8ToggleSound();"></div>
 					<div class="p8_menu_button" style="position:absolute; bottom:20px" id="p8b_full" onClick="p8_give_focus(); p8_request_fullscreen();"></div>
@@ -787,13 +787,13 @@ canvas{
 
 			<!-- display after first layout update -->
 			<div  id="touch_controls_gfx"
-				  style=" pointer-events:none; display:table; 
+				  style=" pointer-events:none; display:table;
 						 position:fixed; top:0px; left:0px; border:0; width:100vw; height:100vh">
 
 					<img src="" id="controls_right_panel" style="position:absolute; opacity:0.5;">
 					<img src="" id="controls_left_panel" style="position:absolute;  opacity:0.5;">
-						
-			
+
+
 			</div> <!-- touch_controls_gfx -->
 
 			<!-- used for clipboard access & keyboard input; displayed and used by PICO-8 only once needed. can be safely removed if clipboard / key presses not needed. -->
@@ -843,4 +843,3 @@ canvas{
 
 </div> <!-- body_0 -->
 </body></html>
-
