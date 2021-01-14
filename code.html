@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Margaux Lenne</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+    </style> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav id="navbar">
+                <ul class="navName" id="navName">
+                    <li><a href="index.html">Margaux Lenne</a></li>
+                </ul>
+                <ul class="navbarElements" id="navbarElements">
+                    <li><a href="code.html">Code</a></li>
+                    <li><a href="photo.html">Photo</a></li>
+                    <li><a href="./autres/CV Margaux Lenne.jpeg" download target="_blank">CV↓</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i></a></li>
+                </ul>
+            </nav>
+        </header>
+        <select name="filtreProjets" id="projectFilter">
+            <option value="projet">All</option>
+            <option value="Front-End">Front-End</option>
+            <option value="Back-End">Back-End</option>
+            <option value="projectManagement">Project Management</option>
+        </select>
+        <div class="wrapper">
+            <a href="https://www.sharpn.eu/" target="_blank">
+                <div class="projet projectManagement">
+                    <h2>Site Web Sharpn</h2>
+                    <video width="320" height="180" autoplay loop>
+                        <source src="./videos/sharpn.mp4" type="video/mp4">
+                    </video>
+                    <div class="body-logos">
+                        <img src="./logos/logoWebflow.png" alt="logo Webflow" />
+                        <img src="./logos/logoAdobeIllustrator.png" alt="logo Webflow" />
+                    </div>
+                    <div class="descriptionProjet">
+                        <h3>Chef de Projet</h3>
+                        <h4>Réalisation du site internet de la nouvelle Business Unit de Sowefund sur Webflow en collaboration avec le directeur artistique de Sowefund.</h4>
+                    </div>
+                    <h3>#ProjectManagement</h3>
+                </div>
+            </a>
+            <a href="https://www.figma.com/file/IgX3HA3KZjPZIgih2Zgbfc/Mockup-Automatisation-AGO?node-id=0%3A1" target="_blank">
+                <div class="projet projectManagement">
+                    <h2>Automatisation AGO</h2>
+                    <video width="320" height="180" autoplay loop>
+                        <source src="./videos/autoAGO.mp4" type="video/mp4">
+                    </video>
+                    <div class="body-logos">
+                        <img src="./logos/logoFigma.png" alt="logo Figma" />   
+                    </div>
+                    <div class="descriptionProjet">
+                        <h3>Chef de Projet</h3>
+                        <h4>Automatisation dans le BO de la gestion des Assemblées Générales Ordinaires des Holdings créées lors des levées de fonds en collaboration avec un Developer.</h4>
+                    </div>
+                    <h3>#ProjectManagement</h3>
+                </div>
+            </a>
+            <a href="" target="_blank">
+                <div class="projet projectManagement">
+                    <h2>Optimisation Salesforce</h2>
+                    <video width="320" height="180" autoplay loop>
+                        <source src="./videos/sharpn.mp4" type="video/mp4">
+                    </video>
+                    <div class="body-logos">
+                        <img src="./logos/logoSalesforce.png" alt="logo Salesforce" />   
+                    </div>
+                    <div class="descriptionProjet">
+                        <h3>Chef de Projet</h3>
+                        <h4>Optimisation du traitement des Promesses d'investissement sur le CRM Salesforce en collaboration avec le Developer de Sowefund. Deploiement à partir d'une sandbox.</h4>
+                    </div>
+                    <h3>#ProjectManagement</h3>
+                </div>
+            </a>
+        </div> 
+    </div> 
+    <footer>
+        <div id="container">
+        <div class="footer-logos">
+            <a href="https://www.linkedin.com/in/margaux-lenne-a88085ba/" target="_blank"><img src="./logos/logoLinkedIn.png" alt="Logo LinkedIn"></a>
+            <a href="https://github.com/margauxln" target="_blank"><img src="./logos/logogithub.png" alt="Logo Github"></a>
+            <a href="https://www.instagram.com/margaux_ln/" target="_blank"><img src="./logos/logoinsta.png" alt="Logo Instagram"></a>
+        </div>
+    </div>
+    </footer>
+    <script src="navbar.js"></script>
+    <script src="filter.js"></script>
+</body>
+</html>
