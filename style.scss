@@ -137,6 +137,11 @@ h3 {
         font-size: 15px;
         text-align:center;
     }
+    img{
+        margin-top:3em;
+        width:100px;
+        border-radius: 20px;
+    }
 }
 
 a {
@@ -187,17 +192,19 @@ button {
 
 footer{
     background-color:$colorBlue;
-    height: 150px;
+    height: 100px;
     width: 100%;
+    bottom:0;
     display: flex;
     align-items: center;
-    margin-top:2em;
+    margin-top:3em;
     .footer-logos{
         text-align: center;
         img{
             width: 50px;
             margin-right: 10px;
             margin-left: 10px;
+            vertical-align: middle;
         }
     }
 }
@@ -265,6 +272,7 @@ footer{
         padding:10px; 
         text-align: center;
         box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+        min-height:624.225px;
         &:hover {
             transform:translate3d(2px,0,0px);
             transform: scale(1.05,1.05);
