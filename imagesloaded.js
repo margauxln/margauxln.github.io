@@ -11,7 +11,10 @@ $(function(){
 var imgLoad = imagesLoaded($('.grid'));
 imgLoad.on( 'progress', function( instance, image ) {
     var result = image.isLoaded ? 'loaded' : 'broken';
-    msnry.layout();
+    if (result === 'loaded'){
+        msnry.layout();
+        console.log("je rearrange la page");
+    };
     console.log( 'image is ' + result + ' for ' + image.img.src );
 });
 
