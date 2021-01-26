@@ -22,6 +22,9 @@ body{
     width: 80%;
     margin:auto;
     flex-grow: 1;
+    @media(max-width: $mobile) {
+        width: 90%;
+    }
 }
 
 /* NAV BAR */

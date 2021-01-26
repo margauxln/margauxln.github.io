@@ -16,6 +16,11 @@ body {
   margin: auto;
   flex-grow: 1;
 }
+@media (max-width: 768px) {
+  #container {
+    width: 90%;
+  }
+}
 
 /* NAV BAR */
 #navbar {
