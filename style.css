@@ -14,6 +14,7 @@ body {
 #container {
   width: 80%;
   margin: auto;
+  flex-grow: 1;
 }
 
 /* NAV BAR */
@@ -205,13 +206,12 @@ footer {
   background-color: #95bca4;
   height: 100px;
   width: 100%;
-  bottom: 0;
   display: flex;
   align-items: center;
-  margin-top: 3em;
+  margin-top: 150px;
 }
 footer .footer-logos {
-  text-align: center;
+  margin: auto;
 }
 footer .footer-logos img {
   width: 50px;
@@ -223,6 +223,7 @@ footer .footer-logos img {
 /* Traitement Images et Logos */
 .bike {
   text-align: center;
+  margin-top: 50px;
 }
 .bike img {
   height: 150px;
@@ -282,13 +283,13 @@ footer .footer-logos img {
   padding: 10px;
   text-align: center;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
-  min-height: 624.225px;
+  min-height: 580px;
 }
 .wrapper .projet:hover {
   transform: translate3d(2px, 0, 0px);
-  transform: scale(1.05, 1.05);
+  transform: scale(1.03, 1.03);
 }
-.wrapper img {
+.wrapper .projet .body-logos img {
   width: 40px;
 }
 .wrapper a {
@@ -297,6 +298,7 @@ footer .footer-logos img {
 }
 .wrapper a:hover {
   font-weight: normal;
+  color: #95bca4;
 }
 .wrapper h3 {
   font-weight: bold;
