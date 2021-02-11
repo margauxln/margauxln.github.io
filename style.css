@@ -185,6 +185,11 @@ a:hover {
   margin-left: 10px;
 }
 
+#csml {
+  height: 40px;
+  width: 85px;
+}
+
 /* Traitement Boutons */
 button {
   color: #fafafa;
